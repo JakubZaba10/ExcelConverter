@@ -30,7 +30,7 @@ SELECT
     WHERE tab1.name = t1.TABLE_NAME AND col1.name = t1.COLUMN_NAME
   ), '') AS [References],
   ISNULL((
-    SELECT CASE WHEN df.definition IS NULL THEN '' ELSE 'DEFAULT' + df.definition END --df.definition
+    SELECT CASE WHEN df.definition IS NULL THEN '' ELSE 'DEFAULT' + df.definition END
     FROM sys.default_constraints df
     INNER JOIN sys.tables t ON df.parent_object_id = t.object_id
     INNER JOIN sys.columns c ON c.object_id = df.parent_object_id AND df.parent_column_id = c.column_id

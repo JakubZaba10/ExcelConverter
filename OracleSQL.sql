@@ -52,7 +52,6 @@ from all_tables t
 where t.owner = (select SYS_CONTEXT( 'USERENV', 'CURRENT_USER' ) from dual) 
 and t.owner = c.owner
 and t.table_name = c.table_name
---and c.table_name = 'T_AGRUPACION_POLIZA'
 and c.owner = colc.owner and 	c.table_name = colc.table_name and   c.column_name = colc.column_name
 and c.OWNER = conc.OWNER(+) and   c.TABLE_NAME = conc.TABLE_NAME(+) and   c.COLUMN_NAME = conc.COLUMN_NAME(+)
 and cn.owner(+) = conc.owner and   conc.TABLE_NAME = cn.TABLE_NAME(+) and   cn.CONSTRAINT_NAME(+) = conc.CONSTRAINT_NAME 
@@ -109,7 +108,6 @@ order by c.table_name
         end loop;
     
         tab_ind := tab_defs.FIRST;
-	--insert into TEMP_TO_FORMAT (recor) values ('Table name,'|| 'Field Name,'||'Data type,'||'Null,'||'PK,'||'Reference to,'||'Constraints,'||'Description');
         
         WHILE (tab_ind IS NOT NULL)
          LOOP
